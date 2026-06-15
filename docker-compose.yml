@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: monorepo_flask
+    container_name: portfolio_backend_flask
     depends_on:
       - mariadb
     ports:
@@ -13,10 +13,10 @@ services:
 
   mariadb:
     image: mariadb:10.6.20
-    container_name: monorepo_mariadb
+    container_name: portfolio_backend_mariadb
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: wash_world
+      MYSQL_DATABASE: portfolio_backend
     volumes:
       - mariadb_data:/var/lib/mysql
     ports:
@@ -24,7 +24,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: monorepo_phpmyadmin
+    container_name: portfolio_backend_phpmyadmin
     depends_on:
       - mariadb
     environment:
